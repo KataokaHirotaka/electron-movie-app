@@ -1,0 +1,25 @@
+header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* margin: 0 50px; */
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.nav-wrapper {
+  margin-right: 30px;
+}
+
+.app-title {
+  text-align: left;
+  margin-left: 50px;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}

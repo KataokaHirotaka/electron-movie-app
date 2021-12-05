@@ -1,0 +1,22 @@
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.search-box input{
+  color: #fff;
+  padding: 10px 30px;
+  background-color: rgba(0,0,0,0.9);
+  border: 1px solid #fff;
+}
+
+.search-button {
+  padding: 10px;
+}
+
+button {
+  cursor: pointer;
+}
+
