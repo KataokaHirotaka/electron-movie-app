@@ -1,17 +1,40 @@
 #home {
-  margin: 100px auto 0 auto;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  margin: 120px auto 0 auto;
 }
-
 
 #search {
   text-align: center;
   margin: 50px auto 0 auto;
 }
 
+#home, #search {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .movie-poster {
-  border-radius: 5px;
+  width: 200px;
+  height: 300px;
+  border-radius: 8px;
   cursor: pointer;
+  transition-duration: .3s;
+}
+
+.content {
+  width: 25%;
+  margin-bottom: 10px;
+  text-align: center;
+  position: relative;
+}
+
+.content .movie-poster{
+  z-index: 0;
+}
+
+.content .movie-poster:hover {
+  transform: scale(1.2);
+  transition-delay: .3s;
+  transition-duration: .3s;
+  position: relative;
+  z-index: 20;
 }

@@ -21,22 +21,24 @@ if (isDev) {
 // BrowserWindow インスタンスを作成する関数
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
-    webPreferences: {
-      preload: path.resolve(__dirname, 'preload.js'),
-    },
+    // webPreferences: {
+    //   preload: path.resolve(__dirname, 'preload.js'),
+    // },
+    
+    width: 1500,
+    height: 1200
+    
   });
 
   if (isDev) {
     // 開発モードの場合はデベロッパーツールを開く
-    mainWindow.webContents.openDevTools({ mode: 'detach' });
+    mainWindow.webContents.openDevTools({ mode: 'right' });
   }
 
   // レンダラープロセスをロード
   mainWindow.loadFile('dist/index.html');
 
-  const width = 800;
-  const height = 800;
-  mainWindow.setPosition(width, height); // 画面幅と高さの設定
+  
   
 };
 

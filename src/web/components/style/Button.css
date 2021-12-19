@@ -1,15 +1,28 @@
 .button-wrapper button {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background-color: #333;
   border-radius: 50%;
-  opacity: .8;
   position: relative;
-  border: 1px solid #fff;
+  border: 2px solid #333;
 }
 
+.button-wrapper button:hover {
+  border: 2px solid #919191;
+  transition-duration: .1s;
+}
+
+/* .button-wrapper .close-button {
+  position: fixed;
+  right: 375px;
+} */
+
 .add-button::before,
-.add-button::after {
+.add-button::after,
+.close-button::before,
+.close-button::after,
+.delete-button::before,
+.delete-button::after {
   content: '';
   width: 20px;
   height: 2px;
@@ -21,4 +34,39 @@
 
 .add-button::after {
   transform: rotate(90deg);
+}
+
+.close-button::before {
+  transform: rotate(45deg);
+}
+
+.close-button::after {
+  transform: rotate(135deg);
+}
+
+
+/* ---------add-button--------- */
+/* 履歴に追加後のcss */
+.add-button.is_add::before {
+  content: '';
+  width: 20px;
+  height: 10px;
+  background-color: transparent;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg);
+  top: 10px;
+}
+
+.add-button.is_add::after {
+  opacity: 0;
+}
+
+/* ---------delete-button--------- */
+.delete-button::before {
+  transform: rotate(45deg);
+}
+
+.delete-button::after {
+  transform: rotate(135deg);
 }

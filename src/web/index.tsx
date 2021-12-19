@@ -5,6 +5,9 @@ import './index.css';
 import { Home, Search } from './components/index';
 
 function App() {
+  const root = document.getElementById('root');
+  root?.classList.add('home');
+
   return (
     <div className="app">
       <Router>

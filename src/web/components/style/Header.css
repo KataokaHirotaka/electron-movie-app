@@ -3,11 +3,11 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* margin: 0 50px; */
-  background-color: #fff;
+  background-color: #141414;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
 }
 
 .nav-wrapper {
@@ -15,11 +15,50 @@ header {
 }
 
 .app-title {
-  text-align: left;
   margin-left: 50px;
+  cursor: pointer;
+}
+
+.nav-list a {
+  color: #d7d3d3;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  transition-duration: .2s;
+}
+
+.nav-list a:hover {
+  color: #9B9B9B;
+  transition-delay: .1s;
+  transition-duration: .2s;
+  opacity: .8;
 }
 
 a {
-  color: #333;
+  color: #fff;
   text-decoration: none;
+}
+
+.home .home-link a:active,
+.search .search-link a:active {
+  color: #fff;
+  transition: 3s;
+  transition-delay: 1s;
+  cursor: default;
+}
+
+.home .home-link a,
+.search .search-link a {
+  color: #fff;
+  opacity: 1;
+}
+
+@keyframes clickedBtn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
