@@ -35,9 +35,7 @@ function Home() {
     deleteFirestoreData();
   }, [dataId]);
   
-
   const homeContextArray = [setDataId]; //HomeContextに渡すデータ
-  
 
   // firestoreからデータを取得する
   useEffect(() => {

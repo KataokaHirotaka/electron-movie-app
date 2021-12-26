@@ -11,7 +11,7 @@
   width: 30%;
   text-align: center;
   background-color: #fff;
-  padding: 50px 20px 20px 20px;
+  padding: 50px 40px 20px 40px;
   border-radius: 8px;
   transition: .5s ease-out;
   position: relative;
@@ -19,7 +19,7 @@
 }
 
 #home #modalContent {
-  height: 400px;
+  height: 420px;
 }
 
 #search #modalContent {
@@ -51,12 +51,24 @@
   outline: none;
 }
 
+.movie-overview {
+  text-align: left;
+}
+
 .add-button-wrapper,
 .delete-button-wrapper,
 .close-button-wrapper {
   width: 40px;
   height: 40px;
   position: absolute;
+}
+
+.delete-button-wrapper {
+  left: 50px;
+}
+
+.add-button-wrapper {
+  left: 50px;
 }
 
 .add-button-wrapper,
@@ -70,15 +82,23 @@
 }
 
 .balloon-wrapper {
+  display: none;
   margin: 0 auto;
   position: absolute;
-  top: -140%;
+  top: -110%;
   left: -130%;
 }
 
-.add-button-wrapper .balloon-wrapper {
+/* .add-button-wrapper .balloon-wrapper {
   top: -110%;
+} */
+
+.balloon-wrapper.is-mouseEnter,
+.balloon-wrapper.is-mouseEneter {
+  display: block;
+  animation: fadeIn .2s;
 }
+
 
 #balloon {
   width: 100px;

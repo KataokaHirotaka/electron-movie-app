@@ -18,9 +18,8 @@ function Results({titleArray, posterPathArray, overviewArray, commentArray, data
   const openModal = () => {
     document.body.classList.add('modalOpner');
     setShowModal(true);
-  }
+  };
   const [clickFlag, setClickFlag] = useState(false);
-
 
   // モーダルに表示するための映画情報
   type MovieData = {
@@ -38,18 +37,26 @@ function Results({titleArray, posterPathArray, overviewArray, commentArray, data
     dataId: ''
   });
   
+  window.addEventListener('DOMConetntLoaded', () => {
+    if (setIsLoading) setTimeout(() => {setIsLoading(false)}, 800)
+  });
+  
   return (
-    <div>
-      <div 
-        className="content-wrapper" 
-        id={id}
-      >
+    <>
+      <div className="content-wrapper" id={id}>
+        {
+          id === 'search' && titleArray.length === 0 && isLoading && (
+            <div className="noContent-wrapper" style={{margin: '50px auto 0 auto'}}>
+              <p>検索結果は見つかりませんでした。</p>
+              <img src={'./img/no_img_2.jpeg'} alt="" />
+            </div>
+          )
+        }
         {
           // 取得した映画データを表示
           titleArray.map((title, i) => {
             let posterPath = posterPathArray[i];
-            // `https://image.tmdb.org/t/p/w154${posterPath}`
-            if (posterPath === null) posterPath = './image/no_image.png';
+            if (posterPath === null) posterPath = './img/no_image.png';
             else posterPath = `https://image.tmdb.org/t/p/w154${posterPath}`;
             // firestoreのデータIDの設定
             let dataId = '';
@@ -65,7 +72,7 @@ function Results({titleArray, posterPathArray, overviewArray, commentArray, data
               <div
                 className="content"
                 id={dataId}
-                onClick={(e) => {
+                onClick={e => {
                   const target = e.currentTarget;
                   const poster = target.querySelector('img');
                   const title = target.querySelector('.movie-title')?.innerHTML;
@@ -82,16 +89,21 @@ function Results({titleArray, posterPathArray, overviewArray, commentArray, data
                   })
                 }}
               >
-                {
-                  isLoading
-                    ? <Skelton />
-                    :
-                      <img
-                        className="movie-poster"
-                        src={posterPath}
-                        onClick={openModal}
-                      />
-                }
+                <div className="skelton-wrapper" style={{display: isLoading ? 'block' : 'none'}}>
+                  <Skelton />
+                </div>
+                <img
+                  className="movie-poster"
+                  src={posterPath}
+                  onClick={openModal}
+                  onLoad={() => {
+                    if (setIsLoading) {
+                      // 1秒間スケルトンを表示するようにする
+                      setTimeout(() => {setIsLoading(false);}, 1000);
+                    }
+                  }}
+                  style={{display: isLoading ? 'none' : 'inline-block'}}
+                />
                 <p className="movie-title" style={{display: 'none'}}>{title}</p>
                 {id === 'home' && <p className="movie-comment" style={{display: 'none'}}>{getComment}</p>}
                 {id === 'search' && <p className="movie-overview" style={{display: 'none'}}>{overview}</p>}
@@ -109,7 +121,7 @@ function Results({titleArray, posterPathArray, overviewArray, commentArray, data
           id={id}
         />
       </div>
-    </div>
+    </>
   )
 }
 

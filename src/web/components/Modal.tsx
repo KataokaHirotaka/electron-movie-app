@@ -31,7 +31,6 @@ function Modal({showModal, setShowModal, setClickFlag, clickFlag, movieData, id}
   const overview = movieData.overview;
   const getComment = movieData.comment;
   const dataId = movieData.dataId; //firestoreのデータID
-  // const [clickFlag, setClickFlag] = useState(false);
   const closeModal = () => {
     document.body.classList.remove('modalOpner');
     setShowModal(false);
@@ -63,8 +62,8 @@ function Modal({showModal, setShowModal, setClickFlag, clickFlag, movieData, id}
           <div id="modalContent" onClick={e => e.stopPropagation()}>
             <div className="movie-card">
               {posterPath && <img className="movie-poster" src={posterPath} />}
-              {movieTitle && <p>{movieTitle}</p>}
-              {id === 'search' && <p>{overview}</p>}
+              {movieTitle && <p className="movie-title">{movieTitle}</p>}
+              {id === 'search' && <p className="movie-overview">{overview}</p>}
               {id === 'search'
                 ? <input
                     type="text"
@@ -76,19 +75,30 @@ function Modal({showModal, setShowModal, setClickFlag, clickFlag, movieData, id}
               }
               {id === 'search'
                 ? 
-                <div className="add-button-wrapper">
-                  <Button buttonClass="add-button" setClickFlag={setClickFlag} />
-                </div>
+                  <div
+                    className="add-button-wrapper"
+                    onClick={e => {
+                      const target = e.currentTarget;
+                      const buttonClass = target.querySelector('button')?.getAttribute('class');
+                      console.log(buttonClass);
+                      
+                      if (buttonClass?.match(/is_add/) && dataId?.length) {
+                        setDataId(dataId);
+                      }
+                    }}
+                  >
+                    <Button buttonClass="add-button" setClickFlag={setClickFlag} />
+                  </div>
                 :
-                <div
-                  className="delete-button-wrapper"
-                  onClick={() => {
-                    if (dataId?.length) setDataId(dataId)
-                    closeModal();
-                  }
-                }>
-                  <Button buttonClass="delete-button" setClickFlag={setClickFlag} />
-                </div>
+                  <div
+                    className="delete-button-wrapper"
+                    onClick={() => {
+                      if (dataId?.length) setDataId(dataId);
+                      closeModal();
+                    }
+                  }>
+                    <Button buttonClass="delete-button" setClickFlag={setClickFlag} />
+                  </div>
               }
             </div>
             <div className="close-button-wrapper" onClick={closeModal}>

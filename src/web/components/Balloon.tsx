@@ -8,12 +8,13 @@ type Props = {
 
 function Balloon({isMouseenter, isAdd, buttonClass}: Props) {
   return (
-    <div className="balloon-wrapper" style={{display: isMouseenter ? 'block' : 'block'}}>
+    <div
+      className={`balloon-wrapper ${isMouseenter && buttonClass!='close-button' && 'is-mouseEnter'}`}
+    >
       <div id="balloon">
         {buttonClass==="add-button" && isAdd && '履歴に追加済'}
         {buttonClass==="add-button" && !isAdd && '履歴に追加'}
         {buttonClass==="delete-button" && '履歴から削除'}
-        {buttonClass==="close-button" && '閉じる'}
       </div>
     </div>
   )

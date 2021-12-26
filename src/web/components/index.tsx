@@ -12,4 +12,4 @@ export {default as Button} from './Button';
 export {default as Balloon} from './Balloon';
 export {default as Card} from './Card';
 export {default as Skelton} from './Skelton';
-// export {default as Loading} from './Loading';
+export {default as NoResults} from './NoResults';

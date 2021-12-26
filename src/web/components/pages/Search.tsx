@@ -19,6 +19,7 @@ function Search() {
     overview: []
   });
   const [isLoading, setIsLoading] = useState(false); // ローディング画面用のstate
+  const [clearFlag, setClearFlag] = useState(false); // 検索結果を削除する用のstate
 
   // 取得したデータを配列にする
   const createDataArray = (res: any, array1: string[], array2: string[], array3: string[]) => {
@@ -49,7 +50,6 @@ function Search() {
         posterPath: posterPathArray,
         overview: overviewArray
       });
-      setTimeout(() => {setIsLoading(false)}, 800)
       return;
     })
     .catch(err => {
@@ -65,6 +65,8 @@ function Search() {
         setMovie={setMovie}
         movie={movie} 
         getMovieData={getMovieData}
+        setClearFlag={setClearFlag}
+        clearFlag={clearFlag}
       />
       <Results
         id={'search'}

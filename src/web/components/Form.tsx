@@ -6,19 +6,13 @@ type Props = {
   setMovie: React.Dispatch<React.SetStateAction<string>>;
   movie: string;
   getMovieData: () => void;
+  clearFlag: boolean;
+  setClearFlag: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function Form({setMovie, movie, getMovieData }: Props) {
+function Form({setMovie, movie, getMovieData, setClearFlag, clearFlag }: Props) {
   const [changeFlag, setChangeFlag] = useState(false);
-  const clearText = () => {
-    setMovie('');
-  };
-  // const [clearFlag, setClearFlag] = useState(false);
-  // const clearMovieData = () => {
-  //   const search = document.getElementById('search');
-  //   if (search) search.style.display = 'none';
-  //   setClearFlag(true);
-  // }
+  const clearText = () => {setMovie('')};
 
   return (
     <form className="search-container">
@@ -40,7 +34,6 @@ function Form({setMovie, movie, getMovieData }: Props) {
         onClick={() => {
           setChangeFlag(false);
           clearText();
-          // clearMovieData();
         }}
       >
         <div className="search-clear-button"></div>

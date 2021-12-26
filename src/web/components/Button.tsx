@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Balloon } from './index';
 import './style/Button.css';
 
-
 type Props = {
   buttonClass: string;
   setClickFlag: React.Dispatch<React.SetStateAction<boolean>> | null;
@@ -10,9 +9,7 @@ type Props = {
 
 function Button({buttonClass, setClickFlag}: Props) {
   const [isAdd, setIsAdd] = useState(false); //add-buttonにクラスをつけるための変数
-  function handleClick() {
-    setIsAdd(!isAdd)
-  }
+  function handleClick() { setIsAdd(!isAdd) }
 
   const [isMouseenter, setMouseenter] = useState(false);
   
@@ -32,7 +29,11 @@ function Button({buttonClass, setClickFlag}: Props) {
         onMouseLeave={() => setMouseenter(false)}
       >
       </button>
-      <Balloon isMouseenter={isMouseenter} isAdd={isAdd} buttonClass={buttonClass}/>
+      <Balloon
+        isMouseenter={isMouseenter}
+        isAdd={isAdd}
+        buttonClass={buttonClass}
+      />
     </div>
   )
 }
